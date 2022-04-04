@@ -5,12 +5,6 @@
 
 (:functions (fuelLevel ?g - generator) (capacity ?g - generator) (holes ?g - generator) )
 
-(:durative-action generate
- :parameters (?g - generator)
- :duration (= ?duration  100)	 
- :condition (over all (>= (fuelLevel ?g) 0))
- :effect (and (decrease (fuelLevel ?g) (* #t 1))))
-
 (:durative-action refuel
  :parameters (?g - generator ?t - tank)
  :duration  (= ?duration  10) 
