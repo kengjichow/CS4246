@@ -4,8 +4,12 @@
     (:init
 		(= (fuelLevel gen)  980)
 		(= (capacity gen)  1000)
+		(on gen)
+		(at 1.0 (not (on gen)))
+		(not (available tank1))
+		(not (available tank2))
 		(at 50.0 (available tank1))
-		(at 100.0 (available tank2))
+		(at 51.0 (not (available tank1)))
     )  
 	(:goal (generator-ran))
 )

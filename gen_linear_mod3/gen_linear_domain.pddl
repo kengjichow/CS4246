@@ -1,14 +1,14 @@
 (define (domain generator_linear)
 (:requirements :fluents :durative-actions :duration-inequalities :adl :typing :timed-initial-literals)
 (:types generator tank)
-(:predicates (refueling ?g - generator) (generator-ran) (available ?t - tank) (generator-on))
+(:predicates (refueling ?g - generator) (on ?g - generator) (generator-ran) (available ?t - tank))
 
 (:functions (fuelLevel ?g - generator) (capacity ?g - generator) )
 
 (:durative-action generate
  :parameters (?g - generator)
  :duration (= ?duration  1000)		 
- :condition (over all (and (>= (fuelLevel ?g) 0) (generator-on))) 
+ :condition (and (over all (>= (fuelLevel ?g) 0)) (at start (on ?g)))
  :effect (and (decrease (fuelLevel ?g) (* #t 1))
 			  (at end (generator-ran))))
 
